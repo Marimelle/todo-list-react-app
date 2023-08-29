@@ -1,7 +1,28 @@
 .App {
+  font-size: 18px;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
+  padding: 2rem;
 }
-
+.tasksList {
+  border: 1px solid grey;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1rem;
+  width: clamp(300px, 80%, 600px);
+}
+.addTask {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+input, button {
+  font: inherit;
+  padding: 4px 8px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
