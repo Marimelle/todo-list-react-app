@@ -1,59 +1,138 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font: normal 16px/1.1 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(73, 80, 104);
+}
+:root {
+  --dark-color: rgb(24, 118, 150);
+  --light-color: rgb(206, 244, 255);
+}
 .App {
   font-size: 18px;
-  font-family: Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
   padding: 2rem;
-}
-.tasksList {
-  border: 1px solid grey;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  align-items: center;
+}
+h1 {
+  margin-bottom: 1.5rem;
+}
+.tasksList {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding: 1rem;
-  width: clamp(300px, 80%, 600px);
+  width: clamp(400px, 80%, 600px);
+  row-gap: 12px;
 }
 .addTask {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 1rem;
+  width: clamp(400px, 80%, 600px);
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  justify-content: stretch;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
 }
-input, button {
+.addTask>* {
+  appearance: none;
+  border: 1px solid rgb(117, 106, 184);
+  border-radius: 5px;
   font: inherit;
-  padding: 4px 8px;
+  display: inline-block;
+  width: 100%;
+  padding: 0.4rem 1rem;
+  outline: none;
+  color: var(--dark-color);
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.addTask>input:focus {
+  border: 1px solid rgb(117, 106, 184);
+  box-shadow: 0 2px 0 rgb(117, 106, 184);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.addTask>button {
+  border: 1px solid rgb(117, 106, 184);
+  background-color: rgb(209, 209, 209);
+  color: rgb(117, 106, 184);
+  font-size: 0.9rem;
+  font-weight: medium;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.addTask>button:hover{
+  border: 1px solid transparent;
+  background-color: rgb(117, 106, 184);
   color: white;
+  box-shadow: 0 3px 0 rgb(117, 106, 184);
 }
-
-.App-link {
-  color: #61dafb;
+.addTask>button:active {
+  animation: addAnimate 0.2s alternate-reverse ease;
 }
-
-@keyframes App-logo-spin {
+@keyframes addAnimate {
   from {
-    transform: rotate(0deg);
+    transform: translate(0, 0);
+    box-shadow: 0 3px 0 rgb(117, 106, 184);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(0, 3px);
+    box-shadow: none;
   }
+}
+.tasksList>div {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items:first baseline;
+  gap: 0.4rem;
+  width: 100%;
+  border: 1px solid var(--dark-color);
+  border-radius: 6px;
+  background-color: var(--light-color);
+  padding: 0.5rem;
+}
+p {
+  width: 100px;
+  hyphenate-character:auto;
+  hyphens:auto;
+  word-break:break-all ;
+}
+.taskCompleted {
+  --dark-color: rgb(45, 138, 22) !important;
+  --light-color: rgb(205, 255, 192)!important;
+}
+.btns {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+.btns .deleteBtn {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.tasksList button {
+  appearance: none;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 6px;
+  background-color: transparent;
+  border: none;
+  color: var(--dark-color);
+  font-weight: bold;
+  font-size: 0.7rem;
+  line-height: 1.1rem;
+  border-radius: 5px;
+}
+/* .tasksList button:hover {
+  border: 1px solid var(--dark-color);
+  border-radius: 5px;
+} */
+.tasksList button:hover,
+.tasksList button:active {
+  transition: all 0.5s ease;
+  border: none;
+  background-color: var(--dark-color);
+  color: white;
 }
