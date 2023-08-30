@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from 'react';
+import Task from './Task.js';
 
 function App() {
   const [list, setList] = useState([]);
@@ -29,14 +30,12 @@ function App() {
     <div className="App">
       <div className="addTask">
         <input onChange={handleInputChange}/>
-        <button onClick={handleClick}>Add new task</button>
+        <button onClick={handleClick}>Add task</button>
       </div>
       <div className="tasksList">
         { (list.length>0) ? list.map(
           (task) => {
-            return (
-            <p>{task.taskId + ".)"} {task.taskName}<button onClick={()=> deleteTask(task.taskId)}>X</button></p>
-            );
+            return <Task taskName={task.taskName} taskId={task.taskId} deleteTask={deleteTask} />
         }
           ) : "No saved tasks."
         }
